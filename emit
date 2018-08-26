@@ -1,0 +1,12 @@
+//event.js 文件
+//大多数时候我们不会直接使用 EventEmitter，而是在对象中继承它。包括 fs、net、 http 在内的，只要是支持事件响应的核心模块都是 EventEmitter 的子类。
+
+var events = require('events');
+var emitter = new events.EventEmitter();
+emitter.on('someEvent', function(arg1, arg2) {
+    console.log('listener1', arg1, arg2);
+});
+emitter.on('someEvent', function(arg1, arg2) {
+    console.log('listener2', arg1, arg2);
+});
+emitter.emit('someEvent', 'arg1 参数', 'arg2 参数');
